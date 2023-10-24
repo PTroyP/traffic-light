@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { TrafficLightBulb } from './TrafficLightBulb';
+import { colorOptions, transitionsOrder } from './lightData';
 
 export const FunctionalTrafficLight = () => {
   const [lightColor, setLightColor] = useState('green');
 
-  const transitionsOrder = { red: 'green', green: 'yellow', yellow: 'red' };
-
-  let nextColor = transitionsOrder[lightColor];
+  const nextColor = transitionsOrder[lightColor];
 
   const nextState = () => {
     setLightColor(nextColor);
@@ -15,9 +14,15 @@ export const FunctionalTrafficLight = () => {
     <div className="traffic-light-box">
       <h2>Functional Traffic Light</h2>
       <div className="traffic-light">
-        <TrafficLightBulb color={'red'} currentColor={lightColor} />
-        <TrafficLightBulb color={'yellow'} currentColor={lightColor} />
-        <TrafficLightBulb color={'green'} currentColor={lightColor} />
+        {colorOptions.map((lightBulb) => {
+          return (
+            <TrafficLightBulb
+              key={lightBulb}
+              color={lightBulb}
+              currentColor={lightColor}
+            />
+          );
+        })}
       </div>
       <button onClick={nextState} className="next-state-button">
         Next State

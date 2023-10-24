@@ -1,4 +1,4 @@
-// import { ClassTrafficLight } from './ClassTrafficLight';
+import { ClassTrafficLight } from './ClassTrafficLight';
 import { FunctionalTrafficLight } from './FunctionalTrafficLight';
 
 function App() {
@@ -9,6 +9,9 @@ function App() {
         <div className="container">
           <div className="left">
             <FunctionalTrafficLight />
+          </div>
+          <div className="right">
+            <ClassTrafficLight />
           </div>
         </div>
       </main>
